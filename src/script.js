@@ -10,7 +10,7 @@ console.log('---------#4');
 // };
 //
 // const getName = user.getName;
-// console.log(getName()); // выводит Vic 2
+// console.log(getName()); // выводит Vic 2 - из глобальной области видимости (var name = 'Vic 2')
 
 var name = 'Vic 2';
 var user = {
@@ -43,9 +43,8 @@ console.log('---------#5');
 //     name: 'Arni',
 // }
 //
-// const getName2 = user1.getName();
-// console.log(getName2); // выводит Vic
-
+// const getName = user1.getName;
+// console.log(getName()); // выводит Vic 2 - из глобальной области видимости (var name = 'Vic 2') либо не выведет вообще ничего, если рассматривать это задание (#5) без привязки к предыдущему (#4)
 
 const user1 = {
     age: 5,
@@ -58,5 +57,8 @@ const user2 = {
     name: 'Arni',
 }
 
-const getName2 = user1.getName.call(user2);
+const getName2 = user1.getName.call(user2); // используем метод call
 console.log(getName2); // выводит Arni
+
+// const getName2 = user1.getName.bind(user2); // используем метод bind
+// console.log(getName2()); // выводит Arni
